@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaGripLines } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -150,23 +151,42 @@ const Nav = () => {
                   </svg>
                 </span>
               </a>
-              <div
-                className="text-white py-4 px-1 block custom:hidden"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
+              <div className="text-white py-4 px-1 block custom:hidden">
                 <FaGripLines
                   className={`cursor-pointer ${
                     isMenuOpen ? "hidden" : "block"
                   }`}
-                />
-                <RxCross1
-                  className={`cursor-pointer ${
-                    isMenuOpen ? "block" : "hidden"
-                  }`}
+                  onClick={() => setIsMenuOpen(true)}
                 />
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        className={`fixed ${
+          isMenuOpen ? "w-full" : "w-0"
+        } block custom:hidden text-white bg-black transition-all duration-700 right-0 top-0 h-screen`}
+      >
+        <div className="w-full flex flex-col gap-3 p-5">
+          <div className="w-full flex justify-end">
+            <RxCross1
+              className={`cursor-pointer`}
+              onClick={() => setIsMenuOpen(false)}
+            />
+          </div>
+
+          <ul className="w-full self-start">
+            {navOption.map((option, index) => (
+              <li
+                className="w-full flex justify-between ps-5 py-2 text-start cursor-pointer hover:text-rose-200"
+                key={index}
+              >
+                <a className="">{option}</a>
+                <MdOutlineKeyboardArrowRight />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </nav>
