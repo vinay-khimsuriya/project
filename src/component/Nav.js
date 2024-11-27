@@ -1,12 +1,24 @@
-import React, { useState } from "react";
-import { FaGripLines } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { FaChevronUp, FaGripLines } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { width } from "../custom hook/useWidth";
+import {
+  RiArrowDownWideFill,
+  RiArrowLeftWideFill,
+  RiArrowRightWideFill,
+  RiArrowUpWideFill,
+} from "react-icons/ri";
+import { FaChevronDown } from "react-icons/fa";
+
+import { HiArrowLeft } from "react-icons/hi2";
+import useWidth from "../custom-hooks/useWidth";
 
 const Nav = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(null);
+  const [openIndexes, setOpenIndexes] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [isHovered, setIsHovered] = useState(null);
+
+  const width = useWidth();
 
   const navOption = [
     "Store",
@@ -22,6 +34,18 @@ const Nav = () => {
   ];
   const category = ["Shop", "Quick Links", "Shop Special Stores"];
   const subCategory = ["Shop", "Quick Links", "Shop Special Stores", "abcd"];
+
+  useEffect(() => {
+    // setIsMenuOpen(false);
+  }, [width]);
+
+  const toggleAccordion = (index) => {
+    setActiveIndex((prev) => (prev === index ? null : index));
+    setOpenIndexes((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
+
   return (
     <nav className="w-full bg-black flex flex-col items-center justify-center relative z-50">
       <div className="w-full lg:w-2/3">
@@ -58,7 +82,7 @@ const Nav = () => {
             <ul className="w-full flex flex-nowrap text-nowrap items-center gap-2 justify-between h-full">
               {navOption.map((option, index) => (
                 <li
-                  className="cursor-pointer"
+                  className="cursor-pointer hover:text-rose-300"
                   key={index}
                   onMouseEnter={() => {
                     setIsHovered(true);
@@ -71,18 +95,17 @@ const Nav = () => {
 
                   <div
                     className={`${isHovered ? "top-[95%]" : "-top-[450%]"}
-                      hidden -z-10 custom:flex justify-center transition-all duration-1000 absolute w-screen left-0 bg-black text-white`}
+                      hidden -z-10 custom:flex justify-center transition-all duration-1000 absolute w-screen left-0 bg-black text-white cursor-default`}
                   >
-                    <div className="w-2/3 text-start flex gap-5 p-5  self-start">
+                    <div className="w-full lg:w-2/3 text-start flex gap-10 p-5  self-start">
                       {category.map((category, index) => (
                         <ul className="">
-                          <li>
+                          <li className="font-semibold pb-2">
                             <a>{category}</a>
                           </li>
                           {subCategory.map((category, index) => (
                             <ul>
-                              <li>
-                                {" "}
+                              <li className="cursor-pointer hover:text-rose-300">
                                 <a>{category}</a>
                               </li>
                             </ul>
@@ -168,10 +191,15 @@ const Nav = () => {
       <div
         className={`fixed ${
           isMenuOpen ? "w-full" : "w-0"
-        } block custom:hidden text-white bg-black transition-all duration-700 right-0 top-0 h-screen`}
+        } block custom:hidden text-white bg-black transition-all duration-700 right-0 top-0 h-screen overflow-auto`}
       >
-        <div className="w-full flex flex-col gap-3 p-5">
-          <div className="w-full flex justify-end">
+        <div className="w-full flex flex-col gap-5 p-5">
+          <div className="w-full flex justify-between">
+            <div>
+              <HiArrowLeft
+              // className={`${isMenuOptionOpen ? "block" : "hidden"}`}
+              />
+            </div>
             <RxCross1
               className={`cursor-pointer`}
               onClick={() => setIsMenuOpen(false)}
@@ -180,13 +208,36 @@ const Nav = () => {
 
           <ul className="w-full self-start">
             {navOption.map((option, index) => (
-              <li
-                className="w-full flex justify-between ps-5 py-2 text-start cursor-pointer hover:text-rose-200"
+              <div
+                className="relative w-full ps-5 py-2 text-start cursor-pointer"
                 key={index}
               >
-                <a className="">{option}</a>
-                <MdOutlineKeyboardArrowRight />
-              </li>
+                <li
+                  className="flex items-center justify-between hover:text-rose-200"
+                  onClick={() => {
+                    toggleAccordion(index);
+                  }}
+                >
+                  <a className="">{option}</a>
+                  <RiArrowRightWideFill className="text-xl" />
+                  {/* {activeIndex === index ? (
+                    <RiArrowUpWideFill className="text-2xl" />
+                  ) : (
+                    <RiArrowDownWideFill className="text-2xl" />
+                  )} */}
+                </li>
+                {activeIndex === index && (
+                  // openIndexes.includes(index)0
+                  <div className="w-full p-1">
+                    <ul className="ps-2">
+                      <li className="p-1 hover:text-red-300">TVs</li>
+                      <li className="p-1 hover:text-red-300">AirPods</li>
+                      <li className="p-1 hover:text-red-300">MacBook</li>
+                      <li className="p-1 hover:text-red-300">Tabs</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
             ))}
           </ul>
         </div>
