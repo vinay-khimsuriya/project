@@ -1,38 +1,47 @@
 import React from "react";
 
 const Container = () => {
+
+  const containeroption = [
+    {
+      heading:"iPhone 16 Pro",
+    text:"Hello, Apple Intelligence",
+    button1:"Learn more",
+    button2:"Buy",
+    img:"container1.jpg"
+  },
+    {
+      heading:"iPhone 16 Pro",
+      text:"Hello, Apple Intelligence",
+      button1:"Learn more",
+      button2:"Buy",
+      img:"container1.jpg"
+    },
+      {
+        heading:"iPhone 16 Pro",
+        text:"Hello, Apple Intelligence",
+        button1:"Learn more",
+        button2:"Buy",
+        img:"container1.jpg"
+      }
+    ]
   return <>
-  <div className="flex-col border-2 ">
-    <div className="border-2 h-screen">
-      <div>
-        <h1 className="text-6xl font-bold pt-10">iPhone 16 Pro</h1>
-        <h3 className="text-3xl font-bold">Hello,Apple Intelligence</h3>
-        <div className="container-button">
-          <button>Learn more</button>
-          <button>Buy</button>
+  < div className="main-container">
+      {containeroption.map((item,index)=>{
+        return(
+        <div className="outer-container" key={index}>
+          <img src={item.img} alt="" />
+        <div className="inner-container" >
+          <p>{item.heading}</p>
+          <p>{item.text}</p>
+          <div className="container-button">
+            <button><a href="">{item.button1}</a></button>
+            <button><a href="">{item.button2}</a></button>
+          </div>
         </div>
-      </div>
-    </div>
-    <div className="border-2 h-screen">
-    <div>
-        <h1 className="text-6xl font-bold pt-10">iPhone 16 Pro</h1>
-        <h3 className="text-3xl font-bold">Hello,Apple Intelligence</h3>
-        <div className="container-button">
-          <button>Learn more</button>
-          <button>Buy</button>
         </div>
-      </div>
-    </div>
-    <div className="border-2 h-screen">
-    <div>
-        <h1 className="text-6xl font-bold pt-10">iPhone 16 Pro</h1>
-        <h3>Hello,Apple Intelligence</h3>
-        <div className="container-button">
-          <button>Learn more</button>
-          <button>Buy</button>
-        </div>
-      </div>
-    </div>
+        )
+      })}
   </div>
   </>;
 };
