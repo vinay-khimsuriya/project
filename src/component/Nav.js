@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { FaGripLines } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { width } from "../custom hook/useWidth";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+
   const navOption = [
     "Store",
     "Mac",
@@ -69,7 +71,7 @@ const Nav = () => {
 
                   <div
                     className={`${isHovered ? "top-[95%]" : "-top-[450%]"}
-                      hidden -z-10 custom:flex justify-center top-full transition-all duration-1000 absolute w-screen left-0 bg-black text-white`}
+                      hidden -z-10 custom:flex justify-center transition-all duration-1000 absolute w-screen left-0 bg-black text-white`}
                   >
                     <div className="w-2/3 text-start flex gap-5 p-5  self-start">
                       {category.map((category, index) => (
