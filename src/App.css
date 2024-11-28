@@ -211,6 +211,89 @@
 .product-inner-container:nth-child(1){
   margin-bottom: 10rem;
 }
+
+/* ********************************CAROUSEL******************************************** */
+
+.slider-container{
+  /* border: 2px solid blue; */
+  margin-top: 1.5rem;
+  /* display: flex; */
+}
+
+.slider-boxes{
+  /* border: 2px solid red; */
+  /* width: 200; */
+  height: 60vh;
+  position: relative;
+}
+
+.slick-slide{
+  margin-left: 1rem;
+}
+
+.slider-boxes img{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.slick-next{
+  right: 0px;
+  /* display: none; */
+}
+
+
+/* ***********************************FOOTER CONTAINER********************************** */
+.footer-main-container{
+  /* border: 2px solid; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+  background-color: #F5F5F7;
+}
+
+.footer-container1{
+  width: 70vw;
+  /* border: 2px solid red; */
+  text-align: left;
+  margin-top: 2rem;
+  color: grey;
+  font-size: 0.8em;
+  text-align: justify;
+}
+
+.footer-container2{
+  display: flex;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  width: 70vw;
+  padding: 1.5rem 0;
+  margin: 1.5rem 0;
+}
+.footer-list{
+  text-align: left;
+  /* margin: auto; */
+  width: 30%;
+  font-size: 0.8em;
+  color: grey;
+}
+.footer-list ul li:nth-child(1){
+  font-weight: bold;
+  color: black;
+}
+.footer-list ul li{
+  margin-top: 0.5rem;
+}
+.footer-list ul li:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.footer-list ul li:nth-child(1):hover{
+  text-decoration: none;
+  cursor: text;
+}
+
 /* **********************************MEDIA QUERY**************************************** */
 
 @media only screen and (max-width:730px){
@@ -227,6 +310,8 @@
   }
   .inner-container p:nth-child(2){
     font-size: 1.5rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
   .inner-container button{
     font-size: 0.9rem;
@@ -263,9 +348,16 @@
   }
   .product-inner-container p:nth-child(2){
     font-size: 1.5rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
   .product-inner-container button{
     font-size: 1rem;
     margin-right: 1rem;
+  }
+}
+@media only screen and (max-width:832px){
+  .footer-container2{
+    display: none;
   }
 }
