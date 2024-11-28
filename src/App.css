@@ -262,6 +262,33 @@
 
 .footer-container2{
   display: flex;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  width: 70vw;
+  padding: 1.5rem 0;
+  margin: 1.5rem 0;
+}
+.footer-list{
+  text-align: left;
+  /* margin: auto; */
+  width: 30%;
+  font-size: 0.8em;
+  color: grey;
+}
+.footer-list ul li:nth-child(1){
+  font-weight: bold;
+  color: black;
+}
+.footer-list ul li{
+  margin-top: 0.5rem;
+}
+.footer-list ul li:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.footer-list ul li:nth-child(1):hover{
+  text-decoration: none;
+  cursor: text;
 }
 
 /* **********************************MEDIA QUERY**************************************** */
