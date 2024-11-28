@@ -258,6 +258,9 @@
   /* border: 2px solid red; */
   text-align: left;
   margin-top: 2rem;
+  color: grey;
+  font-size: 0.8em;
+  text-align: justify;
 }
 
 .footer-container2{
