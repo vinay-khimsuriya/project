@@ -21,3 +21,18 @@ T-Mobile iPhone SE 3 Special Deal: Monthly price (if shown) reflects net monthly
 Apple Intelligence is available in beta on all iPhone 16 models, iPhone 15 Pro, iPhone 15 Pro Max, iPad mini (A17 Pro), and iPad and Mac models with M1 and later, with Siri and device language set to U.S. English, as part of an iOS 18, iPadOS 18, and macOS Sequoia update. English (Australia, Canada, Ireland, New Zealand, South Africa, UK) language support available this December. Some features, additional platforms, and support for additional languages, like Chinese, English (India, Singapore), French, German, Italian, Japanese, Korean, Portuguese, Spanish, Vietnamese, and others, will be coming over the course of the next year.
 A subscription is required for Apple Arcade, Apple Fitness+, Apple Music, and Apple TV+.
 Features are subject to change. Some features, applications, and services may not be available in all regions or all languages.`;
+
+const footerData = [
+    {
+        heading:'Shop and Learn',
+        list:['Store','Mac','iPad','iPhone','Watch','Vision','Airpods','TV & Home','AirTag','Accessories','Gift Cards']
+    },
+    {
+        heading:'Apple Wallet',
+        list:['Wallet','Apple Card','Apple Pay','Apple Cash']
+    },
+    {
+        heading:'Account',
+        list:['Manage Your Apple Account','Apple Store Account','iCloud.com']
+    }
+]

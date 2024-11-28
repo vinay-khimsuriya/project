@@ -356,3 +356,8 @@
     margin-right: 1rem;
   }
 }
+@media only screen and (max-width:832px){
+  .footer-container2{
+    display: none;
+  }
+}

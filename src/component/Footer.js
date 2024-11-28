@@ -1,5 +1,11 @@
-import React, { useEffect } from 'react';
-import {footerContent} from './FooterContent'
+import React, { useEffect, useState } from 'react';
+import {footerContent} from './FooterContent';
+import {
+    RiArrowDownWideFill,
+    RiArrowLeftWideFill,
+    RiArrowRightWideFill,
+    RiArrowUpWideFill,
+  } from "react-icons/ri";
 
 const Footer = () => {
     useEffect(()=>{
@@ -10,6 +16,31 @@ const Footer = () => {
         abc();
     })
     
+
+    const [openIndexes, setOpenIndexes] = useState([]); //for multiple open accordian
+  const [activeIndex, setActiveIndex] = useState(null); //at time single accorian open
+
+  const FooterData = [
+    {
+        heading:'Shop and Learn',
+        list:['Store','Mac','iPad','iPhone','Watch','Vision','Airpods','TV & Home','AirTag','Accessories','Gift Cards']
+    },
+    {
+        heading:'Apple Wallet',
+        list:['Wallet','Apple Card','Apple Pay','Apple Cash']
+    },
+    {
+        heading:'Account',
+        list:['Manage Your Apple Account','Apple Store Account','iCloud.com']
+    }
+]
+
+    const toggleAccordion = (index) => {
+        setActiveIndex((prev) => (prev === index ? null : index));
+        setOpenIndexes((prev) =>
+          prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+        );
+      };
     
   return (
     <>
@@ -129,6 +160,46 @@ const Footer = () => {
                 </ul>
             </div>
         </div>
+        
+
+        <ul className="w-full self-start">
+            {FooterData.map((option, index) => (
+              <div
+                className="relative w-full ps-5 py-2 text-start cursor-pointer"
+                key={index}
+              >
+                <li
+                  className="flex items-center justify-between hover:text-rose-200"
+                  onClick={() => {
+                    toggleAccordion(index);
+                    // setIsMenuOptionOpen(true);
+                  }}
+                >
+                  <a className="">{option.heading}</a>
+                  <RiArrowRightWideFill className="text-xl" />
+                  {/*start//  for accordian type menu option open */}
+                  {/* {activeIndex === index ? (
+                    <RiArrowUpWideFill className="text-2xl" />
+                  ) : (
+                    <RiArrowDownWideFill className="text-2xl" />
+                  )} */}
+                </li>
+                {console.log(openIndexes)}
+                {openIndexes.includes(index)&& (
+                  // activeIndex 
+                  <div className="w-full p-1">
+                    <ul className="ps-2">
+                      <li className="p-1 hover:text-red-300">TVs</li>
+                      <li className="p-1 hover:text-red-300">AirPods</li>
+                      <li className="p-1 hover:text-red-300">MacBook</li>
+                      <li className="p-1 hover:text-red-300">Tabs</li>
+                    </ul>
+                  </div>
+                )}
+                {/*end// for accordian option*/}
+              </div>
+            ))}
+          </ul>
     </div>
     </>
   )
