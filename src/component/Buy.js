@@ -47,11 +47,11 @@ const Buy = () => {
             </span>
           </div>
         </div>
-        <div className="w-full md:flex relative">
-          <div className="w-full md:w-2/3  md:h-screen md:sticky lg:top-[75px] py-5 sm:py-0">
+        <div className="w-full md:flex relative" style={{border:'2px solid'}}>
+          <div className="w-full md:w-2/3  md:h-screen md:sticky lg:top-[75px] py-5 sm:py-0" style={{border:'2px solid red'}}>
             <BuyComponentLeftSide />
           </div>
-          <div className="w-full md:w-1/3">
+          <div className="w-full md:w-1/3" style={{border:'2px solid green'}}>
             <BuyComponentRight />
           </div>
         </div>
