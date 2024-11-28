@@ -8,7 +8,7 @@ const Buy = () => {
   const [isEmiHovered, setIsEmiHovered] = useState(null);
   return (
     <div className="w-full flex items-center justify-center px-8">
-      <div className="w-full md:w-[95%] custom:w-[90%] lg:w-5/6 transition-all duration-1000">
+      <div className="w-full md:w-[95%] custom:w-[90%] transition-all duration-1000">
         <div className="w-full flex flex-col xl:flex-row flex-nowrap justify-between my-3">
           <div className="w-full self-start">
             <p className="text-orange-500">New</p>
@@ -47,11 +47,11 @@ const Buy = () => {
             </span>
           </div>
         </div>
-        <div className="w-full md:flex relative" style={{border:'2px solid'}}>
-          <div className="w-full md:w-2/3  md:h-screen md:sticky lg:top-[75px] py-5 sm:py-0" style={{border:'2px solid red'}}>
+        <div className="w-full md:flex relative mt-12">
+          <div className="w-full md:w-2/3  md:h-screen md:sticky lg:top-[75px] py-5 sm:py-0">
             <BuyComponentLeftSide />
           </div>
-          <div className="w-full md:w-1/3" style={{border:'2px solid green'}}>
+          <div className="w-full md:w-1/3">
             <BuyComponentRight />
           </div>
         </div>
