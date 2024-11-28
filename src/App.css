@@ -258,10 +258,40 @@
   /* border: 2px solid red; */
   text-align: left;
   margin-top: 2rem;
+  color: grey;
+  font-size: 0.8em;
+  text-align: justify;
 }
 
 .footer-container2{
   display: flex;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  width: 70vw;
+  padding: 1.5rem 0;
+  margin: 1.5rem 0;
+}
+.footer-list{
+  text-align: left;
+  /* margin: auto; */
+  width: 30%;
+  font-size: 0.8em;
+  color: grey;
+}
+.footer-list ul li:nth-child(1){
+  font-weight: bold;
+  color: black;
+}
+.footer-list ul li{
+  margin-top: 0.5rem;
+}
+.footer-list ul li:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.footer-list ul li:nth-child(1):hover{
+  text-decoration: none;
+  cursor: text;
 }
 
 /* **********************************MEDIA QUERY**************************************** */
@@ -324,5 +354,10 @@
   .product-inner-container button{
     font-size: 1rem;
     margin-right: 1rem;
+  }
+}
+@media only screen and (max-width:832px){
+  .footer-container2{
+    display: none;
   }
 }

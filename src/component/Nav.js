@@ -1,32 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { FaGripLines } from "react-icons/fa";
+import { FaChevronUp, FaGripLines } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
-import { RxCrossCircled } from "react-icons/rx";
 import {
   RiArrowDownWideFill,
   RiArrowLeftWideFill,
   RiArrowRightWideFill,
   RiArrowUpWideFill,
 } from "react-icons/ri";
-import { CiSearch } from "react-icons/ci";
+import { FaChevronDown } from "react-icons/fa";
 
 import { HiArrowLeft } from "react-icons/hi2";
 import useWidth from "../custom-hooks/useWidth";
-import { clear } from "@testing-library/user-event/dist/clear";
-import { GiHidden } from "react-icons/gi";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(null);
-  const [searchText, setSearchText] = useState("");
-  const [isSearch, setIsSearch] = useState(null);
-  const [isSearchText, setIsSearchText] = useState(false);
-
-  // active if wants to accordian feature start
-  const [openIndexes, setOpenIndexes] = useState([]); //for multiple open accordian
-  const [activeIndex, setActiveIndex] = useState(null); //at time single accorian open
-  // end
-
-  const [isMenuOptionOpen, setIsMenuOptionOpen] = useState(null); // this for open new div for selected option
+  const [openIndexes, setOpenIndexes] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(null);
   const [isHovered, setIsHovered] = useState(null);
 
   const width = useWidth();
@@ -49,16 +38,6 @@ const Nav = () => {
   useEffect(() => {
     // setIsMenuOpen(false);
   }, [width]);
-
-  const handleInputChange = (e) => {
-    const text = e.target.value;
-    setSearchText(text);
-    setIsSearchText(text.trim().length > 0);
-  };
-  const clearInput = () => {
-    setSearchText("");
-    setIsSearchText(false);
-  };
 
   const toggleAccordion = (index) => {
     setActiveIndex((prev) => (prev === index ? null : index));
@@ -141,12 +120,7 @@ const Nav = () => {
           </div>
           <div>
             <div className="flex items-center justify-between pt-1 gap-5">
-              <a
-                className="cursor-pointer"
-                onClick={() => {
-                  setIsSearch(!isSearch);
-                }}
-              >
+              <a className="cursor-pointer">
                 <span className="hidden custom:block">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -214,15 +188,18 @@ const Nav = () => {
           </div>
         </div>
       </div>
-
-      {/*start// Menu start */}
       <div
         className={`fixed ${
           isMenuOpen ? "w-full" : "w-0"
         } block custom:hidden text-white bg-black transition-all duration-700 right-0 top-0 h-screen overflow-auto`}
       >
         <div className="w-full flex flex-col gap-5 p-5">
-          <div className="w-full flex justify-end">
+          <div className="w-full flex justify-between">
+            <div>
+              <HiArrowLeft
+              // className={`${isMenuOptionOpen ? "block" : "hidden"}`}
+              />
+            </div>
             <RxCross1
               className={`cursor-pointer`}
               onClick={() => setIsMenuOpen(false)}
@@ -239,19 +216,17 @@ const Nav = () => {
                   className="flex items-center justify-between hover:text-rose-200"
                   onClick={() => {
                     toggleAccordion(index);
-                    setIsMenuOptionOpen(true);
                   }}
                 >
                   <a className="">{option}</a>
                   <RiArrowRightWideFill className="text-xl" />
-                  {/*start//  for accordian type menu option open */}
                   {/* {activeIndex === index ? (
                     <RiArrowUpWideFill className="text-2xl" />
                   ) : (
                     <RiArrowDownWideFill className="text-2xl" />
                   )} */}
                 </li>
-                {/* {activeIndex === index && (
+                {activeIndex === index && (
                   // openIndexes.includes(index)0
                   <div className="w-full p-1">
                     <ul className="ps-2">
@@ -261,72 +236,12 @@ const Nav = () => {
                       <li className="p-1 hover:text-red-300">Tabs</li>
                     </ul>
                   </div>
-                )} */}
-                {/*end// for accordian option*/}
+                )}
               </div>
             ))}
           </ul>
-          {/*start// for selected menu open new div */}
-          <div
-            className={`${
-              isMenuOptionOpen ? "block" : "hidden"
-            } w-full h-screen fixed top-0 bg-black overflow-auto self-start text-start p-5`}
-          >
-            <div className="w-full flex justify-start pb-5">
-              <HiArrowLeft
-                className="text-xl cursor-pointer"
-                onClick={() => {
-                  setIsMenuOptionOpen(false);
-                }}
-              />
-            </div>
-            <ul className="">
-              {category.map((category, index) => (
-                <li
-                  className="p-1 hover:text-red-300 cursor-pointer"
-                  key={index}
-                >
-                  <a>{category}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          {/*end// new div */}
         </div>
       </div>
-      {/*end// */}
-
-      {/*start// search component  */}
-      <div
-        className={`w-full ${
-          isSearch ? "h-screen" : "h-0"
-        } bg-black transition-all duration-700 fixed top-0 left-0 z-10`}
-      >
-        <div className="w-full h-full flex flex-col items-center overflow-auto">
-          <div className="w-full flex justify-end p-5 text-white cursor-pointer">
-            <RxCross1 onClick={() => setIsSearch(false)} />
-          </div>
-          <div className="w-4/5 custom:w-[700px]">
-            <div className="w-full flex justify-center items-center gap-1 p-2 text-gray-50 border border-gray-500 rounded-lg">
-              <CiSearch className="text-3xl" />
-              <input
-                className="w-full p-1 bg-transparent focus:outline-none font-bold text-2xl"
-                type="text"
-                placeholder="Search"
-                value={searchText}
-                onChange={handleInputChange}
-              />
-              <RxCrossCircled
-                className={`${
-                  isSearchText ? "block" : "hidden"
-                } text-xl cursor-pointer`}
-                onClick={clearInput}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      {/*end// */}
     </nav>
   );
 };
