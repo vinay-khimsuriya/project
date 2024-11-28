@@ -1,208 +1,346 @@
-import React, { useEffect, useState } from 'react';
-import {footerContent} from './FooterContent';
+import React, { useEffect, useState } from "react";
+import { footerContent, footerData } from "./FooterContent";
 import {
-    RiArrowDownWideFill,
-    RiArrowLeftWideFill,
-    RiArrowRightWideFill,
-    RiArrowUpWideFill,
-  } from "react-icons/ri";
+  RiArrowDownWideFill,
+  RiArrowRightWideFill,
+  RiArrowUpWideFill,
+} from "react-icons/ri";
 
 const Footer = () => {
-    useEffect(()=>{
-        const abc = ()=>{
-            const footerContainer = document.querySelector('.footer-container1');
-    footerContainer.innerHTML=footerContent;
-        }
-        abc();
-    })
-    
-
-    const [openIndexes, setOpenIndexes] = useState([]); //for multiple open accordian
+  const hoverEffect = "hover:font-normal";
+  const [openIndexes, setOpenIndexes] = useState([]); //for multiple open accordian
   const [activeIndex, setActiveIndex] = useState(null); //at time single accorian open
 
-  const FooterData = [
-    {
-        heading:'Shop and Learn',
-        list:['Store','Mac','iPad','iPhone','Watch','Vision','Airpods','TV & Home','AirTag','Accessories','Gift Cards']
-    },
-    {
-        heading:'Apple Wallet',
-        list:['Wallet','Apple Card','Apple Pay','Apple Cash']
-    },
-    {
-        heading:'Account',
-        list:['Manage Your Apple Account','Apple Store Account','iCloud.com']
-    }
-]
+  const toggleAccordion = (index) => {
+    setActiveIndex((prev) => (prev === index ? null : index));
+    setOpenIndexes((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
 
-    const toggleAccordion = (index) => {
-        setActiveIndex((prev) => (prev === index ? null : index));
-        setOpenIndexes((prev) =>
-          prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-        );
-      };
-    
   return (
     <>
-    <div className="footer-main-container">
-        <div className="footer-container1"></div>
-        <div className="footer-container2">
-            <div className="footer-list1 footer-list">
-                <ul>
-                    <li>Shop and Learn</li>
-                    <li>Store</li>
-                    <li>Mac</li>
-                    <li>iPad</li>
-                    <li>iPhone</li>
-                    <li>Watch</li>
-                    <li>Vision</li>
-                    <li>Airpods</li>
-                    <li>TV & Home</li>
-                    <li>AirTag</li>
-                    <li>Accessories</li>
-                    <li>Gift Cards</li>
-                </ul>
-                <ul>
-                    <li>Apple Wallet</li>
-                    <li>Wallet</li>
-                    <li>Apple Card</li>
-                    <li>Apple Pay</li>
-                    <li>Apple Cash</li>
-                </ul>
-            </div>
-
-            <div className="footer-list2 footer-list">
-                <ul>
-                    <li>Account</li>
-                    <li>Manage Your Apple Account</li>
-                    <li>Apple Store Account</li>
-                    <li>iCloud.com</li>
-                </ul>
-                <ul>
-                    <li>Entertainment</li>
-                    <li>Apple One</li>
-                    <li>Apple TV+</li>
-                    <li>Apple Music</li>
-                    <li>Apple Arcade</li>
-                    <li>Apple Fitness+</li>
-                    <li>Apple News+</li>
-                    <li>Apple Podcasts</li>
-                    <li>Apple Books</li>
-                    <li>Apple Store</li>
-                </ul>
-            </div>
-
-            <div className="footer-list3 footer-list">
-                <ul>
-                    <li>Apple Store</li>
-                    <li>Find a Store</li>
-                    <li>Genius Bar</li>
-                    <li>Today at Apple</li>
-                    <li>Group Reservations</li>
-                    <li>Apple Camp</li>
-                    <li>Apple Store App</li>
-                    <li>Certified Refurbished</li>
-                    <li>Apple Trade in</li>
-                    <li>Financing</li>
-                    <li>Carrier Deals at Apple</li>
-                    <li>Order Status</li>
-                    <li>Shopping Help</li>
-                </ul>
-            </div>
-
-            <div className="footer-list4 footer-list">
-                <ul>
-                    <li>For Business</li>
-                    <li>Apple and Business</li>
-                    <li>Shop for Business</li>
-                </ul>
-                <ul>
-                    <li>For Education</li>
-                    <li>Apple and Education</li>
-                    <li>Shop for K-12</li>
-                    <li>Shop for College</li>
-                </ul>
-                <ul>
-                    <li>For Healthcare</li>
-                    <li>Apple in Healthcare</li>
-                    <li>Mac in Healthcare</li>
-                    <li>Health on Apple Watch</li>
-                    <li>Health Records on iPhone and iPad</li>
-                </ul>
-                
-                <ul>
-                    <li>For Government</li>
-                    <li>Shop for Government</li>
-                    <li>Shop for Veterans and Military</li>
-                </ul>
-            </div>
-
-            <div className="footer-list5 footer-list">
-                <ul>
-                    <li>Apple Values</li>
-                    <li>Accessibility</li>
-                    <li>Education</li>
-                    <li>Environment</li>
-                    <li>Inclusion and Diversity</li>
-                    <li>Privacy</li>
-                    <li>Racial Equity and Justice</li>
-                    <li>Supply Chain</li>
-                </ul>
-                <ul>
-                    <li>About Apple</li>
-                    <li>Newsroom</li>
-                    <li>Apple Leadership</li>
-                    <li>Career Opportunities</li>
-                    <li>Investors</li>
-                    <li>Ethics and Compliance</li>
-                    <li>Events</li>
-                    <li>Contact Apple</li>
-                </ul>
-            </div>
-        </div>
-        
-
-        <ul className="w-full self-start">
-            {FooterData.map((option, index) => (
-              <div
-                className="relative w-full ps-5 py-2 text-start cursor-pointer"
-                key={index}
-              >
-                <li
-                  className="flex items-center justify-between hover:text-rose-200"
-                  onClick={() => {
-                    toggleAccordion(index);
-                    // setIsMenuOptionOpen(true);
-                  }}
-                >
-                  <a className="">{option.heading}</a>
-                  <RiArrowRightWideFill className="text-xl" />
-                  {/*start//  for accordian type menu option open */}
-                  {/* {activeIndex === index ? (
-                    <RiArrowUpWideFill className="text-2xl" />
-                  ) : (
-                    <RiArrowDownWideFill className="text-2xl" />
-                  )} */}
-                </li>
-                {console.log(openIndexes)}
-                {openIndexes.includes(index)&& (
-                  // activeIndex 
-                  <div className="w-full p-1">
-                    <ul className="ps-2">
-                      <li className="p-1 hover:text-red-300">TVs</li>
-                      <li className="p-1 hover:text-red-300">AirPods</li>
-                      <li className="p-1 hover:text-red-300">MacBook</li>
-                      <li className="p-1 hover:text-red-300">Tabs</li>
-                    </ul>
-                  </div>
-                )}
-                {/*end// for accordian option*/}
+      <div className="w-full footer-main-container">
+        <div className="w-full px-10 lg:w-2/3 lg:px-0 text-justify text-sm ">
+          <div className="w-full">
+            {footerContent.map((content, index) => (
+              <div className="flex gap-1 my-3 text-sm">
+                <p className="indent-5">
+                  {index + 1 + "."} <spam>{content}</spam>
+                </p>
               </div>
             ))}
-          </ul>
-    </div>
-    </>
-  )
-}
+          </div>
+          <div className="my-6">
+            <div className="w-full hidden custom:flex justify-between">
+              <div className="flex flex-col gap-1">
+                <ul className="">
+                  <li className="my-1">Shop and Learn</li>
+                  <li>
+                    <ul className="font-light">
+                      <li className={`cursor-pointer ${hoverEffect}`}>Store</li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>Mac</li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>iPad</li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        iPhone
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>Watch</li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Vision
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Airpods
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        TV & Home
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        AirTag
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Accessories
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Gift Cards
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul className="">
+                  <li className="my-1">Apple Wallet</li>
+                  <li>
+                    <ul className="font-light">
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Wallet
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Card
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Pay
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Cash
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
 
-export default Footer
+              <div className="flex flex-col gap-1">
+                <ul className="">
+                  <li className="my-1">Account</li>
+                  <li>
+                    <ul className="font-light">
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Manage Your Apple Account
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Store Account
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        iCloud.com
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul className="">
+                  <li className="my-1">Entertainment</li>
+                  <li>
+                    <ul className="font-light">
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple One
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple TV+
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Music
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Arcade
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Fitness+
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple News+
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Podcasts
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Books
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Store
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <ul className="">
+                  <li className="my-1">Apple Store</li>
+                  <li>
+                    <ul className="font-light">
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Find a Store
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Genius Bar
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Today at Apple
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Group Reservations
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Camp
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Store App
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Certified Refurbished
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Trade in
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Financing
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Carrier Deals at Apple
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Order Status
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Shopping Help
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <ul className="">
+                  <li className="my-1">For Business</li>
+                  <li>
+                    <ul className="font-light">
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple and Business
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Shop for Business
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul className="">
+                  <li className="my-1">For Education</li>
+                  <li>
+                    <ul className="font-light">
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple and Education
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Shop for K-12
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Shop for College
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul className="">
+                  <li className="my-1">For Healthcare</li>
+                  <li>
+                    <ul className="font-light">
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple in Healthcare
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Mac in Healthcare
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Health on Apple Watch
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Health Records on iPhone and iPad
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <ul className="">
+                  <li className="my-1">For Government</li>
+                  <li>
+                    <ul className="font-light">
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Shop for Government
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Shop for Veterans and Military
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <ul className="">
+                  <li className="my-1">Apple Values</li>
+                  <li>
+                    <ul className="font-light">
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Accessibility
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Education
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Environment
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Inclusion and Diversity
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Privacy
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Racial Equity and Justice
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Supply Chain
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li className="my-1">About Apple</li>
+                  <li>
+                    <ul className="font-light">
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Newsroom
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Apple Leadership
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Career Opportunities
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Investors
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Ethics and Compliance
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Events
+                      </li>
+                      <li className={`cursor-pointer ${hoverEffect}`}>
+                        Contact Apple
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="my-3 block custom:hidden">
+              {footerData.map((object, index) => (
+                <div
+                  className="border rounded my-2 relative"
+                  onClick={() => toggleAccordion(index)}
+                >
+                  <div className="w-full flex justify-between items-center border rounded p-1 cursor-pointer">
+                    <p className="w-full py-1">{object.heading}</p>
+                    {openIndexes.includes(index) ? (
+                      <RiArrowUpWideFill className="me-2" />
+                    ) : (
+                      <RiArrowDownWideFill className="me-2" />
+                    )}
+                  </div>
+                  {openIndexes.includes(index) && (
+                    <div className="px-5 py-2">
+                      {object.list.map((content, index) => (
+                        <p className="font-light pe-1 cursor-pointer hover:font-normal">
+                          {content}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Footer;
