@@ -8,6 +8,7 @@ import Fifth from "../images/5.jpg";
 import Six from "../images/6.jpg";
 
 const Section2 = () => {
+  const [productData, setProductData] = useState(null);
 
   const[productData,setProductData]=useState(null);
   return (
