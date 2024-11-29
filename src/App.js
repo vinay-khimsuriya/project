@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
 import Carousel from "./component/Carousel";
 import Container from "./component/Container";
@@ -9,10 +10,11 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <Container/>
-      <ProductContainer/>
-      <Carousel/>
-      <Footer/>
+      <Outlet />
+      {/* <Container />
+      <ProductContainer />
+      <Carousel /> */}
+      <Footer />
     </div>
   );
 }
