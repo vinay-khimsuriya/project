@@ -242,6 +242,9 @@
   /* display: none; */
 }
 
+.slick-slider > button{
+  right: 0;
+}
 
 /* ***********************************FOOTER CONTAINER********************************** */
 .footer-main-container{
