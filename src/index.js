@@ -5,15 +5,22 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Buy from "./component/Buy";
+import Container from "./container/Container.js";
 
 const createRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "/buy",
-    element: <Buy />,
+    children: [
+      {
+        path: "/",
+        element: <Container />,
+      },
+      {
+        path: "/buy",
+        element: <Buy />,
+      },
+    ],
   },
 ]);
 
