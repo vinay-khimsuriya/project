@@ -4,6 +4,7 @@ import First from "../images/2.jpg";
 import Second from "../images/5.jpg";
 import Third from "../images/2.jpg";
 import SectionCardWithLayer from "./SectionCardWithLayer";
+
 const Section1 = () => {
   return (
     <div className="w-full m-0 p-0">

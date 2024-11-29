@@ -3,7 +3,7 @@ import React from "react";
 const SectionCard = ({ marginbottom, bgimage }) => {
   return (
     <div
-      className={`w-full text-white border h-[550px] bg-black ${
+      className={`w-full text-white border h-[550px] bg-black cursor-pointer ${
         marginbottom ? "mb-2" : "mb-0"
       }`}
       style={{

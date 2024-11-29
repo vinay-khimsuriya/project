@@ -1,70 +1,51 @@
-import React ,{useRef} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import product1 from "../images/product1.webp";
 import product2 from "../images/product2.webp";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 
 const BuyComponentLeftSide = () => {
-  let sliderRef = useRef(null);
-  const play = () => {
-    sliderRef.slickPlay();
-  };
-  const pause = () => {
-    sliderRef.slickPause();
-  };
+  const images = [product1, product2];
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  
-  const settings = {
-    // button:false,
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    // autoplay: true,
-    autoplaySpeed: 2000,
-    variableWidth:true,
-    nextArrow:<NextArrow/>,
-    prevArrow:<PrevArrow/>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  const handleDotClick = (index) => {
+    setCurrentIndex(index);
   };
-
-  function NextArrow(props) {
-    const { onClick } = props;
-    return (
-      <div
-        className="hidden md:block py-2 px-4 absolute top-1/2 right-6 lg:-right-16 -translate-y-1/2 text-default-high bg-default-light hover:text-black hover:bg-stone-300 rounded-full z-10"
-        onClick={onClick}
-      >
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-    );
-  }
-
-  function PrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className="hidden md:block py-2 px-4 absolute top-1/2 left-6 lg:-left-16 -translate-y-1/2 text-default-high bg-default-light hover:text-black hover:bg-stone-300 rounded-full z-10"
-        onClick={onClick}
-      >
-        <i class="fa-solid fa-chevron-left"></i>
-      </div>
-    );
-  }
 
   return (
-    // <div className="w-full">
-      <div className="slider-container">
-        <Slider className="" ref={(slider) => (sliderRef = slider)} {...settings} >
-        <div className="slider-boxes" style={{ width:800 }}>
-          <img className="rounded-3xl" src={product1} alt="" />
-        </div>
-        <div className="slider-boxes" style={{ width:800 }}>
-          <img className="rounded-3xl" src={product2} alt="" />
-        </div>
-      </Slider>
+    <div className="relative mx-auto overflow-hidden rounded ">
+      <div
+        className="flex transition-transform duration-500"
+        style={{
+          transform: `translateX(-${currentIndex * 100}%)`,
+        }}
+      >
+        {images.map((image, index) => (
+          <div key={index} className="w-full shrink-0">
+            <img className="w-full" src={image} alt={`Slide ${index + 1}`} />
+          </div>
+        ))}
       </div>
 
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => handleDotClick(index)}
+            className={`w-3 h-3 rounded-full ${
+              currentIndex === index ? "bg-gray-800" : "bg-gray-400"
+            }`}
+          ></button>
+        ))}
+      </div>
+    </div>
   );
 };
 
