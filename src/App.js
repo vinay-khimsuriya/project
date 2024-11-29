@@ -11,9 +11,6 @@ function App() {
     <div className="App">
       <Nav />
       <Outlet />
-      {/* <Container />
-      <ProductContainer />
-      <Carousel /> */}
       <Footer />
     </div>
   );
