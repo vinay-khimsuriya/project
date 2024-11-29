@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import "./App.css";
-import Carousel from "./component/Carousel";
 import Container from "./component/Container";
 import Footer from "./component/Footer";
 import Nav from "./component/Nav";
@@ -11,6 +10,7 @@ function App() {
     <div className="App">
       <Nav />
       <Outlet />
+
       <Footer />
     </div>
   );

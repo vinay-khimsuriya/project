@@ -2,8 +2,11 @@ import React, { useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import iphoneFirst from "../images/iphone-16-first.webp";
+import iphoneSecond from "../images/iphone-16-second.jpg";
+import iphoneThird from "../images/iphone-16-third.jpg";
 
-const Carousel = () => {
+const Section3 = () => {
   let sliderRef = useRef(null);
   const play = () => {
     sliderRef.slickPlay();
@@ -13,6 +16,7 @@ const Carousel = () => {
   };
 
   const settings = {
+    arrows:false,
     button:false,
     dots: true,
     infinite: true,
@@ -30,25 +34,25 @@ const Carousel = () => {
         initialSlide={0}
         >
         <div className="slider-boxes" style={{ width:800 }}>
-          <img src="container1.jpg" alt="" />
+          <img src={iphoneFirst} alt="" />
         </div>
         <div className="slider-boxes" style={{ width:800 }}>
-          <img src="container2.jpg" alt="" />
+          <img src={iphoneSecond} alt="" />
         </div>
         <div className="slider-boxes" style={{ width:800 }}>
-          <img src="container1.jpg" alt="" />
+          <img src={iphoneThird} alt="" />
         </div>
         <div className="slider-boxes" style={{ width:800 }}>
-          <img src="container2.jpg" alt="" />
+          <img src={iphoneSecond} alt="" />
         </div>
         <div className="slider-boxes" style={{ width:800 }}>
-          <img src="container1.jpg" alt="" />
+          <img src={iphoneThird} alt="" />
         </div>
         <div className="slider-boxes" style={{ width:800 }}>
-          <img src="container2.jpg" alt="" />
+          <img src={iphoneSecond} alt="" />
         </div>
       </Slider>
     </div>
   );
 };
-export default Carousel;
+export default Section3;
