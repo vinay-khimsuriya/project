@@ -9,6 +9,7 @@ import Six from "../images/6.jpg";
 
 const Section2 = () => {
 
+  const[productData,setProductData]=useState(null);
   return (
     <div className="w-full p-2 grid gap-2 md:grid-cols-2">
       <SectionCard

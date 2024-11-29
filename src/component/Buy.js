@@ -48,7 +48,7 @@ const Buy = () => {
           </div>
         </div>
         <div className="w-full md:flex relative mt-12">
-          <div className="w-full md:w-2/3  md:h-screen md:sticky lg:top-[75px] py-5 sm:py-0">
+          <div className="w-full h-[600px] flex flex-col justify-end md:w-2/3  md:sticky lg:top-[75px]">
             <BuyComponentLeftSide />
           </div>
           <div className="w-full md:w-1/3">
