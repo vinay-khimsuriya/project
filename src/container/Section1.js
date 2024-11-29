@@ -1,15 +1,17 @@
 import React from "react";
 import SectionCard from "./SectionCard";
-import iphoneFirst from "../images/iphone-16-first.webp";
-import iphoneSecond from "../images/iphone-16-second.jpg";
-import iphoneThird from "../images/iphone-16-third.jpg";
-
+import First from "../images/2.jpg";
+import Second from "../images/5.jpg";
+import Third from "../images/2.jpg";
+import SectionCardWithLayer from "./SectionCardWithLayer";
 const Section1 = () => {
   return (
-    <div className="w-full border">
-      <SectionCard marginbottom="true" bgimage={iphoneFirst} />
-      <SectionCard bgimage={iphoneSecond} />
-      <SectionCard bgimage={iphoneThird} />
+    <div className="w-full m-0 p-0">
+      {/* <SectionCardWithLayer marginbottom="true" bgimage={Second} /> */}
+
+      <SectionCard marginbottom="true" bgimage={First} />
+      <SectionCard bgimage={Second} />
+      <SectionCard bgimage={Third} />
     </div>
   );
 };
