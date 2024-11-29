@@ -1,6 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const SectionCard = ({ marginbottom, bgimage }) => {
+  const navigate = useNavigate();
+
+  const handleBuyClick = () => {
+    navigate("/buy");
+  };
+
   return (
     <div
       className={`w-full text-white border h-[550px] bg-black cursor-pointer ${
@@ -24,7 +31,10 @@ const SectionCard = ({ marginbottom, bgimage }) => {
               <button className="bg-blue-600 px-5 py-2 rounded-full hover:bg-blue-800 ">
                 Learn more
               </button>
-              <button className="bg-transparent border border-blue-600 px-5 py-2 rounded-full hover:bg-blue-800 ">
+              <button
+                className="bg-transparent border border-blue-600 px-5 py-2 rounded-full hover:bg-blue-800 "
+                onClick={handleBuyClick}
+              >
                 Buy
               </button>
             </div>
