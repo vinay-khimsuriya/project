@@ -1,4 +1,5 @@
 import React from "react";
+import Buycard from "./Buycard";
 
 const BuyComponentRight = () => {
   return (
@@ -9,50 +10,20 @@ const BuyComponentRight = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-0 md:gap-4 lg:gap-0">
-        <div className="flex border-2 border-gray-500 rounded-lg justify-between py-4 px-1 mt-4 pr-4 pl-4 text-sm lg:text-base xl:text-base text-left">
-          <div>
-            <h4>
-              <b>iPhone 16 Pro</b>
-            </h4>
-            <p>
-              6.3-inch display<sup>1</sup>
-            </p>
-            <p style={{ margin: "0.5rem" }}>
-              Apple Intelligence<sup>8</sup>
-            </p>
-          </div>
-          <div className="ml-[1rem]">
-            <p>
-              From $999
-              <br />
-              or $41.62/mo
-              <br />
-              for 24 mo.*
-            </p>
-          </div>
-        </div>
-        <div className="flex md:flex-row lg:flex border-2 border-gray-500 rounded-lg justify-between py-4 px-1 mt-4 pr-4 pl-4 text-sm lg:text-base xl:text-base text-left">
-          <div>
-            <h4>
-              <b>iPhone 16 Pro</b>
-            </h4>
-            <p>
-              6.3-inch display<sup>1</sup>
-            </p>
-            <p style={{ margin: "0.5rem" }}>
-              Apple Intelligence<sup>8</sup>
-            </p>
-          </div>
-          <div>
-            <p>
-              From $999
-              <br />
-              or $41.62/mo
-              <br />
-              for 24 mo.*
-            </p>
-          </div>
-        </div>
+        <Buycard
+          title="iPhone 16 Pro"
+          description="6.3-inch display"
+          price={44450}
+          installment={1599}
+          isProduct={true}
+        />
+        <Buycard
+          title="iPhone 16 Pro max"
+          description="6.9-inch display"
+          price={44450}
+          installment={1599}
+          isProduct={true}
+        />
       </div>
       <div className=" flex border-gray-500 rounded-lg py-4 pr-4 pl-4 mt-4 bg-gray-200 text-sm lg:text-base xl:text-base text-left">
         <div>
@@ -89,117 +60,11 @@ const BuyComponentRight = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-0 md:gap-4 lg:gap-0">
-          <div className="flex justify-between items-center border-2 border-gray-300 rounded-[1rem] p-4 mt-6 text-gray-300">
-            <p>
-              128GB<sup>2</sup>
-            </p>
-            <p>
-              From $999
-              <br />
-              or $41.62/mo.
-              <br />
-              for 24 mo.*
-            </p>
-          </div>
-
-          <div className="flex justify-between items-center border-2 border-gray-300 rounded-[1rem] p-4 mt-6 text-gray-300">
-            <p>
-              256GB<sup>2</sup>
-            </p>
-            <p>
-              From $999
-              <br />
-              or $41.62/mo.
-              <br />
-              for 24 mo.*
-            </p>
-          </div>
-
-          <div className="flex justify-between items-center border-2 border-gray-300 rounded-[1rem] p-4 mt-6 text-gray-300">
-            <p>
-              512GB<sup>2</sup>
-            </p>
-            <p>
-              From $999
-              <br />
-              or $41.62/mo.
-              <br />
-              for 24 mo.*
-            </p>
-          </div>
-
-          <div className="flex justify-between items-center border-2 border-gray-300 rounded-[1rem] p-4 mt-6 text-gray-300">
-            <p>
-              1TB<sup>2</sup>
-            </p>
-            <p>
-              From $999
-              <br />
-              or $41.62/mo.
-              <br />
-              for 24 mo.*
-            </p>
-          </div>
+          <Buycard subtitle="128Gb" price={44450} installment={1599} />
+          <Buycard subtitle="256Gb" price={56520} installment={2099} />
+          <Buycard subtitle="512Gb" price={76890} installment={2599} />
+          <Buycard subtitle="1024Gb" price={99999} installment={3599} />
         </div>
-
-        {/* <div className= "block md:grid lg:block grid-cols-2 gap-x-4 max485:flex flex-col">
-          <div>
-            <div className="flex justify-between items-center border-2 border-gray-300 rounded-[1rem] p-2 mt-6 text-gray-300 ">
-              <p>
-                128GB<sup>2</sup>
-              </p>
-              <p>
-                From $999
-                <br />
-                or $41.62/mo.
-                <br />
-                for 24 mo.*
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="flex justify-between items-center border-2 border-gray-300 rounded-[1rem] p-2 mt-6 text-gray-300 ">
-              <p>
-                256GB<sup>2</sup>
-              </p>
-              <p>
-                From $999
-                <br />
-                or $41.62/mo.
-                <br />
-                for 24 mo.*
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="flex justify-between items-center border-2 border-gray-300 rounded-[1rem] p-2 mt-6 text-gray-300 ">
-              <p>
-                512GB<sup>2</sup>
-              </p>
-              <p>
-                From $999
-                <br />
-                or $41.62/mo.
-                <br />
-                for 24 mo.*
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="flex justify-between items-center border-2 border-gray-300 rounded-[1rem] p-2 mt-6 text-gray-300 ">
-              <p>
-                1TB<sup>2</sup>
-              </p>
-              <p>
-                From $999
-                <br />
-                or $41.62/mo.
-                <br />
-                for 24 mo.*
-              </p>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );
